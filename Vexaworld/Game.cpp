@@ -5,6 +5,7 @@
 #include "ChunkMap.h"
 #include "ObjectPlacer.h"
 #include <map>
+#include <cmath>
 
 Game::Game(SimpleSDLWrapper* myRenderer) : renderer(myRenderer) 
 {

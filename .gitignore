@@ -29,8 +29,12 @@
 *.exe
 *.out
 *.app
+
 /Vexaworld/bin/Vexaworld.pdb
 /Vexaworld/x64/Release
 /x64
 /.vs/
 /Vexaworld/x64/Debug
+
+!Vexaworld/SDL2/**
+!Vexaworld/SDL2_image/**
