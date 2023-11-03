@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#include <iostream>
 
 // Dont wanna use a C library
 
@@ -75,7 +76,7 @@ dimentions SimpleSDLWrapper::getDimentions()
 
 Image::Image(SimpleSDLWrapper* wrapper, std::string path) {
     texture = IMG_LoadTexture(wrapper->renderer, path.c_str());
-    if (!texture) printf("%s", IMG_GetError());
+    if (!texture) std::cout << IMG_GetError() << std::endl;
 }
 
 Image::~Image()

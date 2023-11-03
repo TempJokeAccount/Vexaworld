@@ -26,8 +26,10 @@ void Game::update(const float deltaTime)
 {
 	player->update(deltaTime);
     auto dimentions = renderer->getDimentions();
-    cameraX = player->x - dimentions.width / 2;
-    cameraY = player->y - dimentions.height / 2;
+
+    cameraX = std::lerp(cameraX, player->x - dimentions.width / 2, 0.01 * deltaTime);
+    cameraY = std::lerp(cameraY, player->y - dimentions.height / 2, 0.003 * deltaTime);
+
     objectPlacer->update();
 }
 
