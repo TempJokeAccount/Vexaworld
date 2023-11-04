@@ -8,6 +8,4 @@ class Block final : public ImageBox
 {
 public:
 	Block(Chunk* chunk, int x, int y);
-	int chunkX;
-	int chunkY;
 };

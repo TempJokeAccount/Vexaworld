@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClInclude Include="Block.h" />
     <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="ChunkMap.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SimpleSDLWrapper.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chunk.h" />
@@ -171,7 +173,6 @@
     <ClInclude Include="ObjectPlacer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SimpleSDLWrapper.h" />
-    <ClInclude Include="solid.h" />
     <ClInclude Include="GameObject.h" />
   </ItemGroup>
   <ItemGroup>
