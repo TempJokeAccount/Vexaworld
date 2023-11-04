@@ -4,8 +4,11 @@
 #include "defs.h"
 #include "ChunkMap.h"
 #include "ObjectPlacer.h"
+#include "TestWindow.h"
+#include "Block.h"
 #include <map>
 #include <cmath>
+#include <iostream>
 
 Game::Game(SimpleSDLWrapper* myRenderer) : renderer(myRenderer) 
 {
@@ -13,6 +16,7 @@ Game::Game(SimpleSDLWrapper* myRenderer) : renderer(myRenderer)
 	player = new Player(this, 10, 10, PLAYER_WIDTH, PLAYER_HEIGHT, "firtir.png");
 	chunks = new ChunkMap(this);
     objectPlacer = new ObjectPlacer(this);
+    windows.push_back(new TestWindow(this));
 }
 
 Game::~Game()
@@ -35,11 +39,45 @@ void Game::update(const float deltaTime)
 
 void Game::handleEvent(SDL_Event &event, bool *quit)
 {
+    if (event.type == SDL_QUIT)
+    {
+        *quit = 1;
+        return;
+    }
+
+    // mouse
+    {
+        int x;
+        int y;
+        uint32_t mouseState = SDL_GetMouseState(&x, &y);
+        mouseX = x;
+        mouseY = y;
+        leftMouseHeld = mouseState & 1;
+    }
+
+    // TODO: split game up into scene and game so scene can handle own events
+
+    for (auto& window : windows)
+    {
+        if (Block::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
+        {
+            WindowEvent windowEvent = WindowEvent(2);
+            switch (event.type)
+            {
+            case SDL_MOUSEBUTTONDOWN:
+                windowEvent = MOUSE_DOWN;
+                break;
+            case SDL_MOUSEMOTION:
+                windowEvent = MOUSE_MOVE;
+                break;
+            }
+            window->handleEvent(windowEvent);
+            return;
+        }
+    }
+
     switch (event.type)
     {
-        case SDL_QUIT:
-            *quit = 1;
-            break;
         case SDL_KEYDOWN:
         case SDL_KEYUP:
         {
@@ -62,16 +100,6 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
             break;
         }
     }
-
-    // mouse
-    {
-        int x;
-        int y;
-        uint32_t mouseState = SDL_GetMouseState(&x, &y);
-        mouseX = x;
-        mouseY = y;
-        leftMouseHeld = mouseState & 1;
-    }
 }
 
 void Game::render(const float deltaTime) 
@@ -82,6 +110,12 @@ void Game::render(const float deltaTime)
 	player->render();
 	chunks->render();
     objectPlacer->render();
+
+    for (auto& window : windows)
+    {
+        window->render();
+    }
+
 
 	renderer->present();
 }

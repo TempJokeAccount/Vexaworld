@@ -51,6 +51,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\ui</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleSDLWrapper.h">
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWindow.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

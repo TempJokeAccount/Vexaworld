@@ -1,6 +1,7 @@
 #pragma once
 #include "SimpleSDLWrapper.h"
 #include <map>
+#include <vector>
 
 class Player;
 class ChunkMap;
@@ -8,6 +9,7 @@ class Chunk;
 class Block;
 class GameObject;
 class ObjectPlacer;
+class Window;
 
 class Game 
 {
@@ -16,6 +18,7 @@ public:
 	~Game();
 	int cameraX = 0;
 	int cameraY = 0;
+	std::vector<Window*> windows{};
 	std::map<std::string, Image*>* imageCache;
 	void update(float deltaTime);
 	void render(float deltaTime);
