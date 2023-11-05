@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include "Game.h"
+#include "Scene.h"
 
 bool GameObject::rectIntersects(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2)
 {
@@ -13,9 +13,9 @@ bool GameObject::rectIntersects(float x1, float y1, int w1, int h1, float x2, fl
 	}
 }
 
-GameObject::GameObject(Game* game, float x, float y, int width, int height) : x(x), y(y), width(width), height(height), game(game)
+GameObject::GameObject(Scene* scene, float x, float y, int width, int height) : x(x), y(y), width(width), height(height), scene(scene)
 {
-	renderer = game->renderer;
+	renderer = scene->renderer;
 }
 
 bool GameObject::intersects(GameObject* gameObject)

@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <iostream>
 
-ChunkMap::ChunkMap(Game* game): game(game)
+ChunkMap::ChunkMap(Scene* scene) : scene(scene)
 {
 	create(0, 0);
 }
@@ -17,7 +17,7 @@ ChunkMap::~ChunkMap()
 
 Chunk* ChunkMap::create(std::pair<long, long> pair)
 {
-	Chunk* chunk = new Chunk(game, pair.first, pair.second);
+	Chunk* chunk = new Chunk(scene, pair.first, pair.second);
 	chunks[pair] = chunk;
 	if(pair.second == 0) chunk->loadTestChunk();
 	return chunk;
@@ -26,7 +26,7 @@ Chunk* ChunkMap::create(std::pair<long, long> pair)
 
 Chunk* ChunkMap::create(long x, long y)
 {
-	Chunk* chunk = new Chunk(game, x, y);
+	Chunk* chunk = new Chunk(scene, x, y);
 	chunks[std::make_pair(x, y)] = chunk;
 	chunk->loadTestChunk();
 	return chunk;

@@ -1,12 +1,12 @@
 #pragma once
-#include "Game.h"
+#include "Scene.h"
 #include "SimpleSDLWrapper.h"
 
 class GameObject
 {
 public:
-    GameObject(Game* game, float x, float y, int width, int height);
-    Game* game;
+    GameObject(Scene* scene, float x, float y, int width, int height);
+    Scene* scene;
     SimpleSDLWrapper* renderer;
     float x;
     float y;

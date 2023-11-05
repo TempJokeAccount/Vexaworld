@@ -1,5 +1,6 @@
 #include "Window.h"
-#include "Game.h"
+#include "Game.h" 
+#include "defs.h"
 
 Window::Window(Game* game) : game(game)
 {
@@ -11,6 +12,15 @@ Window::Window(Game* game) : game(game)
 
 void Window::render()
 {
+	auto renderer = game->renderer;
 
-	renderContent();
+	// background
+	renderer->setColor(0xFF, 0xFF, 0xFF, 0xFF);
+	renderer->fillRect(x, y, width, height);
+
+	// titlebar
+	renderer->setColor(0x6D, 0x6D, 0x6D, 0xFF);
+	renderer->fillRect(x, y, width, WINDOW_TITLEBAR_HEIGHT);
+
+	renderContent(x, y + WINDOW_TITLEBAR_HEIGHT, width, height - WINDOW_TITLEBAR_HEIGHT);
 }

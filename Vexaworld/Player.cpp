@@ -92,7 +92,7 @@ void Player::snapToRight(Block* block)
 
 Block* Player::getBlocker(float x, float y)
 {
-	return game->getChunkAtPos(x, y)->getBlockIntersecting(x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
+	return scene->getChunkAtPos(x, y)->getBlockIntersecting(x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
 }
 
 void Player::render()
@@ -101,7 +101,7 @@ void Player::render()
 	float accY = y;
 	accX -= (float)width / 2;
 	accY -= height;
-	accX -= game->cameraX;
-	accY -= game->cameraY;
+	accX -= scene->cameraX;
+	accY -= scene->cameraY;
 	renderer->drawImage(image, accX, accY, width * 2, height * 2, 0, flip);
 }

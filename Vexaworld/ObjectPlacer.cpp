@@ -1,11 +1,11 @@
 #include "ObjectPlacer.h"
 #include "ImageBox.h"
-#include "Game.h"
+#include "scene.h"
 #include "defs.h"
 #include "Block.h"
 #include "Chunk.h"
 
-ObjectPlacer::ObjectPlacer(Game* game) : ImageBox(game, 0, 0, BLOCK_SIZE, BLOCK_SIZE, "block.png")
+ObjectPlacer::ObjectPlacer(Scene* scene) : ImageBox(scene, 0, 0, BLOCK_SIZE, BLOCK_SIZE, "block.png")
 {
 	blockOptions = {};
 	image->setAlpha(127);
@@ -13,8 +13,9 @@ ObjectPlacer::ObjectPlacer(Game* game) : ImageBox(game, 0, 0, BLOCK_SIZE, BLOCK_
 
 void ObjectPlacer::update()
 {
-	x = game->mouseX + game->cameraX;
-	y = game->mouseY + game->cameraY;
+	Game* game = scene->game;
+	x = game->mouseX + scene->cameraX;
+	y = game->mouseY + scene->cameraY;
 	if (x < 0) x -= BLOCK_SIZE;
 	if (y < 0) y -= BLOCK_SIZE;
 	x = (int)x / BLOCK_SIZE * BLOCK_SIZE;
@@ -22,7 +23,7 @@ void ObjectPlacer::update()
 
 	if (game->leftMouseHeld)
 	{
-		Chunk* chunk = game->getChunkAtPos(x + 1, y + 1);
+		Chunk* chunk = scene->getChunkAtPos(x + 1, y + 1);
 		if (deleteMode)
 		{
 			chunk->deleteBlock(x, y);

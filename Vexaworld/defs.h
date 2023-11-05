@@ -8,3 +8,5 @@ constexpr int CHUNK_SIZE_PIXELS = CHUNK_SIZE * BLOCK_SIZE;
 
 constexpr int PLAYER_WIDTH = 24;
 constexpr int PLAYER_HEIGHT = (int)(PLAYER_WIDTH * 1.5);
+
+constexpr int WINDOW_TITLEBAR_HEIGHT = 24;
