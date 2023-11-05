@@ -25,7 +25,7 @@ void mainLoop(Game& game)
         lastTick = currentTick;
 
         game.update(deltaTime);
-        game.render(deltaTime);
+        game.render();
         game.renderer->delay(1);
     }
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "ImageBox.h"
-#include "Game.h"
+#include "Scene.h"
 #include "Block.h"
 
 struct BlockOptions
@@ -11,7 +11,7 @@ struct BlockOptions
 class ObjectPlacer : public ImageBox
 {
 public:
-	ObjectPlacer(Game* game);
+	ObjectPlacer(Scene* scene);
 	void update();
 	bool deleteMode = false;
 private:

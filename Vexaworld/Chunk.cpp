@@ -5,7 +5,7 @@
 #include "Block.h"
 #include "ObjectPlacer.h"
 
-Chunk::Chunk(Game* game, float x, float y) : GameObject(game, x * CHUNK_SIZE * BLOCK_SIZE, y * CHUNK_SIZE * BLOCK_SIZE, CHUNK_SIZE * BLOCK_SIZE, CHUNK_SIZE * BLOCK_SIZE)
+Chunk::Chunk(Scene* scene, float x, float y) : GameObject(scene, x* CHUNK_SIZE* BLOCK_SIZE, y* CHUNK_SIZE* BLOCK_SIZE, CHUNK_SIZE* BLOCK_SIZE, CHUNK_SIZE* BLOCK_SIZE)
 {
 	for (int i = 0; i < 16; i++)
 	{

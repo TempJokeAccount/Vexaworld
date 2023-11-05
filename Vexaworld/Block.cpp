@@ -4,7 +4,7 @@
 
 Block::Block(Chunk* chunk, int chunkX, int chunkY) :
 	ImageBox(
-		chunk->game,
+		chunk->scene,
 		chunk->x + chunkX * BLOCK_SIZE,
 		chunk->y + chunkY * BLOCK_SIZE,
 		BLOCK_SIZE,

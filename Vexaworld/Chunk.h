@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "Game.h"
+#include "Scene.h"
 #include "defs.h"
 #include <array>
 #include "Block.h"
@@ -10,7 +10,7 @@ struct BlockOptions;
 class Chunk final : public GameObject
 {
 public:
-	Chunk(Game* game, float x, float y);
+	Chunk(Scene* scene, float x, float y);
 	~Chunk();
 	Block* blocks[CHUNK_SIZE][CHUNK_SIZE];
 	virtual void render();
