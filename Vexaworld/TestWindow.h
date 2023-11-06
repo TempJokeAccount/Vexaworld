@@ -37,5 +37,4 @@ public:
 
 private:
 	bool isRed = false;
-
 };

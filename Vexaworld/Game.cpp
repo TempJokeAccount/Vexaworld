@@ -11,7 +11,6 @@
 
 Game::Game(SimpleSDLWrapper* myRenderer) : renderer(myRenderer) 
 {
-    imageCache = new std::map<std::string, Image*>;
     scene = new Scene(this, myRenderer);
     windows.push_back(new TestWindow(this));
 }
@@ -37,24 +36,33 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
 
     // mouse
     {
-        int x;
-        int y;
-        uint32_t mouseState = SDL_GetMouseState(&x, &y);
-        mouseX = x;
-        mouseY = y;
+        uint32_t mouseState = SDL_GetMouseState(&mouseX, &mouseY);
         leftMouseHeld = mouseState & 1;
     }
 
-    for (auto& window : windows)
+    // handle focus 
+    if (leftMouseHeld)
     {
-        if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
+        focusedWindow = nullptr;
+        for (auto& window : windows)
         {
-            window->handleEvent(event);
-            return;
+            if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
+            {
+                scene->blur();
+                focusedWindow = window;
+                break;
+            }
         }
     }
 
-    scene->handleEvent(event);
+    if (focusedWindow)
+    {
+        focusedWindow->handleEvent(event);
+    }
+    else
+    {
+        scene->handleEvent(event);
+    }
 }
 
 void Game::render() 
