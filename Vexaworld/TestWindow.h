@@ -17,7 +17,7 @@ class TestWindow final : public Window {
         renderer->fillRect(x, y, width, height);
     }
 
-    virtual void handleEvent(SDL_Event &event) override {
+    virtual void handleContentEvent(SDL_Event &event) override {
         if (event.type == SDL_MOUSEBUTTONDOWN) {
             isRed = !isRed;
         }

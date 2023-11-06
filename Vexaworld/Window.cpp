@@ -22,3 +22,23 @@ void Window::render() {
 
     renderContent(x, y + WINDOW_TITLEBAR_HEIGHT, width, height - WINDOW_TITLEBAR_HEIGHT);
 }
+
+void Window::handleEvent(SDL_Event &event) {
+    int mouseX = game->mouseX - x;
+    int mouseY = game->mouseY - y;
+    if (isDragged) {
+        if (event.type == SDL_MOUSEBUTTONUP) {
+            isDragged = false;
+        } else {
+            x = game->mouseX - lastDragX;
+            y = game->mouseY - lastDragY;
+        }
+    }
+    if (event.type == SDL_MOUSEBUTTONDOWN && mouseY < WINDOW_TITLEBAR_HEIGHT) {
+        isDragged = true;
+        lastDragX = mouseX;
+        lastDragY = mouseY;
+    } else {
+        handleContentEvent(event);
+    }
+}

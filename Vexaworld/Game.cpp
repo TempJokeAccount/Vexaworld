@@ -36,7 +36,7 @@ void Game::handleEvent(SDL_Event &event, bool *quit) {
     }
 
     // handle focus
-    if (leftMouseHeld) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
         focusedWindow = nullptr;
         for (auto &window : windows) {
             if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height)) {
