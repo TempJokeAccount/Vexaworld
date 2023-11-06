@@ -15,9 +15,8 @@ ChunkMap::~ChunkMap() {
 Chunk *ChunkMap::create(std::pair<long, long> pair) {
     Chunk *chunk = new Chunk(scene, pair.first, pair.second);
     chunks[pair] = chunk;
-    if (pair.second == 0) {
+    if (pair.second == 0)
         chunk->loadTestChunk();
-    }
     return chunk;
 }
 
