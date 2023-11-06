@@ -53,3 +53,31 @@ Block* Scene::getBlockAtPos(float x, float y)
 {
 	return getChunkAtPos(x, y)->getBlockAtAbsolutePos(x, y);
 }
+
+void Scene::handleEvent(SDL_Event& event)
+{
+    switch (event.type)
+    {
+    case SDL_KEYDOWN:
+    case SDL_KEYUP:
+    {
+        bool keyHeld = event.type == SDL_KEYDOWN;
+        switch (event.key.keysym.sym)
+        {
+        case SDLK_SPACE:
+            player->isJumpHeld = keyHeld;
+            break;
+        case SDLK_a:
+            player->isLeftHeld = keyHeld;
+            break;
+        case SDLK_d:
+            player->isRightHeld = keyHeld;
+            break;
+        case SDLK_LCTRL:
+            objectPlacer->deleteMode = keyHeld;
+            break;
+        }
+        break;
+    }
+    }
+}

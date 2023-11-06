@@ -45,8 +45,6 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
         leftMouseHeld = mouseState & 1;
     }
 
-    // TODO: split game up into scene and game so scene can handle own events
-
     for (auto& window : windows)
     {
         if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
@@ -66,30 +64,7 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
         }
     }
 
-    switch (event.type)
-    {
-        case SDL_KEYDOWN:
-        case SDL_KEYUP:
-        {
-            bool keyHeld = event.type == SDL_KEYDOWN;
-                switch (event.key.keysym.sym)
-                {
-                case SDLK_SPACE:
-                    scene->player->isJumpHeld = keyHeld;
-                    break;
-                case SDLK_a:
-                    scene->player->isLeftHeld = keyHeld;
-                    break;
-                case SDLK_d:
-                    scene->player->isRightHeld = keyHeld;
-                    break;
-                case SDLK_LCTRL:
-                    scene->objectPlacer->deleteMode = keyHeld;
-                    break;
-            }
-            break;
-        }
-    }
+    scene->handleEvent(event);
 }
 
 void Game::render() 

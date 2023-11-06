@@ -24,7 +24,7 @@ public:
 
 	void update(float deltaTime);
 	void render();
-	void handleEvent(SDL_Event& event, bool* quit);
+	void handleEvent(SDL_Event& event);
 	Chunk* getChunkAtPos(float x, float y);
 	Block* getBlockAtPos(float x, float y);
 private:

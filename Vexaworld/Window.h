@@ -13,7 +13,6 @@ class Window
 public:
 	Window(Game* game);
 	virtual ~Window() {};
-	bool focus = false;
 	int x, y, width, height;
 	Game* game;
 	void render();
