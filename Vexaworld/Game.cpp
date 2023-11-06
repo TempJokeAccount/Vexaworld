@@ -1,35 +1,30 @@
 #include "Game.h"
-#include "SimpleSDLWrapper.h"
-#include "defs.h"
-#include "TestWindow.h"
-#include "Scene.h"
 #include "GameObject.h"
-#include "Player.h"
 #include "ObjectPlacer.h"
-#include <map>
+#include "Player.h"
+#include "Scene.h"
+#include "SimpleSDLWrapper.h"
+#include "TestWindow.h"
+#include "defs.h"
 #include <iostream>
+#include <map>
 
-Game::Game(SimpleSDLWrapper* myRenderer) : renderer(myRenderer) 
-{
+Game::Game(SimpleSDLWrapper *myRenderer) : renderer(myRenderer) {
     scene = new Scene(this, myRenderer);
     windows.push_back(new TestWindow(this));
 }
 
-Game::~Game()
-{
+Game::~Game() {
     delete scene;
-	delete renderer;
+    delete renderer;
 }
 
-void Game::update(const float deltaTime) 
-{
+void Game::update(const float deltaTime) {
     scene->update(deltaTime);
 }
 
-void Game::handleEvent(SDL_Event &event, bool *quit)
-{
-    if (event.type == SDL_QUIT)
-    {
+void Game::handleEvent(SDL_Event &event, bool *quit) {
+    if (event.type == SDL_QUIT) {
         *quit = 1;
         return;
     }
@@ -40,14 +35,11 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
         leftMouseHeld = mouseState & 1;
     }
 
-    // handle focus 
-    if (leftMouseHeld)
-    {
+    // handle focus
+    if (leftMouseHeld) {
         focusedWindow = nullptr;
-        for (auto& window : windows)
-        {
-            if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
-            {
+        for (auto &window : windows) {
+            if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height)) {
                 scene->blur();
                 focusedWindow = window;
                 break;
@@ -55,27 +47,22 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
         }
     }
 
-    if (focusedWindow)
-    {
+    if (focusedWindow) {
         focusedWindow->handleEvent(event);
-    }
-    else
-    {
+    } else {
         scene->handleEvent(event);
     }
 }
 
-void Game::render() 
-{
-	renderer->setColor(0x1F, 0x1F, 0x1F, 0xFF);
-	renderer->clear();
+void Game::render() {
+    renderer->setColor(0x1F, 0x1F, 0x1F, 0xFF);
+    renderer->clear();
 
     scene->render();
 
-    for (auto& window : windows)
-    {
+    for (auto &window : windows) {
         window->render();
     }
 
-	renderer->present();
+    renderer->present();
 }

@@ -8,27 +8,28 @@ class ObjectPlacer;
 class Block;
 class Chunk;
 
-class Scene
-{
-	friend Game;
-public:
-	Scene(Game* game, SimpleSDLWrapper* renderer);
-	~Scene();
+class Scene {
+    friend Game;
 
-	Game* game;
-	SimpleSDLWrapper* renderer;
+  public:
+    Scene(Game *game, SimpleSDLWrapper *renderer);
+    ~Scene();
 
-	int cameraX = 0;
-	int cameraY = 0;
-	Player* player;
+    Game *game;
+    SimpleSDLWrapper *renderer;
 
-	void update(float deltaTime);
-	void render();
-	void handleEvent(SDL_Event& event);
-	void blur();
-	Chunk* getChunkAtPos(float x, float y);
-	Block* getBlockAtPos(float x, float y);
-private:
-	ChunkMap* chunks;
-	ObjectPlacer* objectPlacer;
+    int cameraX = 0;
+    int cameraY = 0;
+    Player *player;
+
+    void update(float deltaTime);
+    void render();
+    void handleEvent(SDL_Event &event);
+    void blur();
+    Chunk *getChunkAtPos(float x, float y);
+    Block *getBlockAtPos(float x, float y);
+
+  private:
+    ChunkMap *chunks;
+    ObjectPlacer *objectPlacer;
 };
