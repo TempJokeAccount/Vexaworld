@@ -49,17 +49,7 @@ void Game::handleEvent(SDL_Event &event, bool *quit)
     {
         if (GameObject::rectIntersects(mouseX, mouseY, 1, 1, window->x, window->y, window->width, window->height))
         {
-            WindowEvent windowEvent = WindowEvent(2);
-            switch (event.type)
-            {
-            case SDL_MOUSEBUTTONDOWN:
-                windowEvent = MOUSE_DOWN;
-                break;
-            case SDL_MOUSEMOTION:
-                windowEvent = MOUSE_MOVE;
-                break;
-            }
-            window->handleEvent(windowEvent);
+            window->handleEvent(event);
             return;
         }
     }

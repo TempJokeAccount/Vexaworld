@@ -60,7 +60,6 @@ void Scene::handleEvent(SDL_Event& event)
     {
     case SDL_KEYDOWN:
     case SDL_KEYUP:
-    {
         bool keyHeld = event.type == SDL_KEYDOWN;
         switch (event.key.keysym.sym)
         {
@@ -79,5 +78,12 @@ void Scene::handleEvent(SDL_Event& event)
         }
         break;
     }
-    }
+}
+
+void Scene::blur()
+{
+    player->isJumpHeld = false;
+    player->isLeftHeld = false;
+    player->isRightHeld = false;
+    objectPlacer->deleteMode = false;
 }

@@ -22,9 +22,9 @@ public:
 		renderer->fillRect(x, y, width, height);
 	}
 
-	virtual void handleEvent(WindowEvent event) override
+	virtual void handleEvent(SDL_Event& event) override
 	{
-		if (event == MOUSE_DOWN)
+		if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
 			isRed = !isRed;
 		}
