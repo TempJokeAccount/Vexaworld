@@ -20,6 +20,7 @@ class Scene {
 
     int cameraX = 0;
     int cameraY = 0;
+    bool leftMouseHeld = false;
     Player *player;
 
     void update(float deltaTime);

@@ -52,7 +52,7 @@ Block *Scene::getBlockAtPos(float x, float y) {
 void Scene::handleEvent(SDL_Event &event) {
     switch (event.type) {
     case SDL_KEYDOWN:
-    case SDL_KEYUP:
+    case SDL_KEYUP: {
         bool keyHeld = event.type == SDL_KEYDOWN;
         switch (event.key.keysym.sym) {
         case SDLK_SPACE:
@@ -70,9 +70,17 @@ void Scene::handleEvent(SDL_Event &event) {
         }
         break;
     }
+    case SDL_MOUSEBUTTONDOWN:
+    case SDL_MOUSEBUTTONUP:
+        if (event.button.button == SDL_BUTTON_LEFT) {
+            leftMouseHeld = event.button.state;
+        }
+        break;
+    }
 }
 
 void Scene::blur() {
+    leftMouseHeld = false;
     player->isJumpHeld = false;
     player->isLeftHeld = false;
     player->isRightHeld = false;

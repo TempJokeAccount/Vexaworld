@@ -21,7 +21,7 @@ void ObjectPlacer::update() {
     x = (int)x / BLOCK_SIZE * BLOCK_SIZE;
     y = (int)y / BLOCK_SIZE * BLOCK_SIZE;
 
-    if (game->leftMouseHeld) {
+    if (scene->leftMouseHeld) {
         Chunk *chunk = scene->getChunkAtPos(x + 1, y + 1);
         if (deleteMode) {
             chunk->deleteBlock(x, y);
