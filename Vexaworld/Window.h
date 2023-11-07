@@ -5,7 +5,7 @@
 class Window {
   public:
     Window(Game *game);
-    virtual ~Window(){};
+    virtual ~Window();
     int x, y, width, height;
     Game *game;
     void render();
