@@ -21,5 +21,5 @@ class Game {
     int mouseY = 0;
     bool leftMouseHeld = false;
     // The window that was last clicked. If null, the scene is focused.
-    Window *focusedWindow;
+    Window *focusedWindow = nullptr;
 };

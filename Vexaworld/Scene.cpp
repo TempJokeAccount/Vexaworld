@@ -71,10 +71,10 @@ void Scene::handleEvent(SDL_Event &event) {
             break;
         }
         case SDL_MOUSEBUTTONDOWN:
-            leftMouseHeld = true;
-            break;
         case SDL_MOUSEBUTTONUP:
-            leftMouseHeld = false;
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                leftMouseHeld = event.button.state;
+            }
             break;
     }
 }
