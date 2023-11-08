@@ -54,7 +54,7 @@ void SimpleSDLWrapper::delay(int ms) {
     SDL_Delay(ms);
 };
 
-dimentions SimpleSDLWrapper::getDimentions() {
+Dimensions SimpleSDLWrapper::getDimensions() {
     int *widthPointer = new int;
     int *heightPointer = new int;
     SDL_GetRendererOutputSize(renderer, widthPointer, heightPointer);

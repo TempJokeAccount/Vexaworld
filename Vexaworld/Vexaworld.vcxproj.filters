@@ -54,6 +54,9 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PixelDrawer.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleSDLWrapper.h">
@@ -89,11 +92,11 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\ui</Filter>
     </ClInclude>
-    <ClInclude Include="TestWindow.h">
-      <Filter>Header Files\ui</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelDrawer.h">
+      <Filter>Header Files\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

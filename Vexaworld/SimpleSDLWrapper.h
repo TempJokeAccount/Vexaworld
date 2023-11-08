@@ -1,11 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-
-struct dimentions {
-    int width;
-    int height;
-};
+#include "defs.h"
 
 class SimpleSDLWrapper;
 
@@ -34,7 +30,7 @@ class SimpleSDLWrapper {
     void present();
     void clear();
     void delay(int);
-    dimentions getDimentions();
+    Dimensions getDimensions();
 
   private:
     SDL_Renderer *renderer;

@@ -10,3 +10,11 @@ constexpr int PLAYER_WIDTH = 24;
 constexpr int PLAYER_HEIGHT = (int)(PLAYER_WIDTH * 1.5);
 
 constexpr int WINDOW_TITLEBAR_HEIGHT = 24;
+
+struct Dimensions {
+    int width, height;
+};
+
+struct Point {
+    int x, y;
+};

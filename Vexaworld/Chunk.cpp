@@ -21,10 +21,7 @@ Chunk::~Chunk() {
                 delete block;
             }
         }
-        delete[] & blocks[i];
     }
-
-    delete[] & blocks;
 }
 
 void Chunk::render() {

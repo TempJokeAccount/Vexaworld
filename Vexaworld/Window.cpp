@@ -4,10 +4,6 @@
 #include <algorithm>
 
 Window::Window(Game *game) : game(game) {
-    x = 100;
-    y = 100;
-    width = 300;
-    height = 200;
 }
 
 Window::~Window() {
@@ -54,6 +50,11 @@ void Window::handleEvent(SDL_Event &event) {
         lastDragX = mouseX;
         lastDragY = mouseY;
     } else {
-        handleContentEvent(event);
+        if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+            leftMouseHeld = true;
+        } else if (event.type == SDL_MOUSEBUTTONUP && event.button.button == SDL_BUTTON_LEFT) {
+            leftMouseHeld = false;
+        }
+        handleContentEvent(event, {mouseX, mouseY - WINDOW_TITLEBAR_HEIGHT});
     }
 }

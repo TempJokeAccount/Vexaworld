@@ -21,10 +21,10 @@ Scene::~Scene() {
 
 void Scene::update(const float deltaTime) {
     player->update(deltaTime);
-    auto dimentions = renderer->getDimentions();
+    auto dimensions = renderer->getDimensions();
 
-    cameraX = std::lerp(cameraX, player->x - dimentions.width / 2, 0.01 * deltaTime);
-    cameraY = std::lerp(cameraY, player->y - dimentions.height / 2, 0.003 * deltaTime);
+    cameraX = std::lerp(cameraX, player->x - dimensions.width / 2, 0.01 * deltaTime);
+    cameraY = std::lerp(cameraY, player->y - dimensions.height / 2, 0.003 * deltaTime);
 
     objectPlacer->update();
 }

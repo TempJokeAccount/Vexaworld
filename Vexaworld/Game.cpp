@@ -1,17 +1,18 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "ObjectPlacer.h"
+#include "PixelDrawer.h"
 #include "Player.h"
 #include "Scene.h"
 #include "SimpleSDLWrapper.h"
-#include "TestWindow.h"
+
 #include "defs.h"
 #include <iostream>
 #include <map>
 
 Game::Game(SimpleSDLWrapper *myRenderer) : renderer(myRenderer) {
     scene = new Scene(this, myRenderer);
-    windows.push_back(new TestWindow(this));
+    windows.push_back(new PixelDrawer(this));
 }
 
 Game::~Game() {
