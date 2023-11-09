@@ -6,11 +6,12 @@
 struct BlockOptions {
 };
 
-class ObjectPlacer : public ImageBox {
+class ObjectPlacer final : public ImageBox {
   public:
     ObjectPlacer(Scene *scene);
     void update();
     bool deleteMode = false;
+    void render() override;
 
   private:
     BlockOptions blockOptions;

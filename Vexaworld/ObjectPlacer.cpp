@@ -7,7 +7,6 @@
 
 ObjectPlacer::ObjectPlacer(Scene *scene) : ImageBox(scene, 0, 0, BLOCK_SIZE, BLOCK_SIZE, "block.png") {
     blockOptions = {};
-    image->setAlpha(127);
 }
 
 void ObjectPlacer::update() {
@@ -29,4 +28,10 @@ void ObjectPlacer::update() {
             chunk->placeBlock({}, x, y);
         }
     }
+}
+
+void ObjectPlacer::render() {
+    image->setAlpha(127);
+    __super::render();
+    image->setAlpha(255);
 }
