@@ -76,7 +76,7 @@ Block *Chunk::placeBlock(BlockOptions options, float x, float y) {
     int accY = y - this->y;
     accX /= BLOCK_SIZE;
     accY /= BLOCK_SIZE;
-    return blocks[accX][accY] = new Block(this, accX, accY);
+    return blocks[accX][accY] = new Block(this, accX, accY, options.image);
 }
 
 void Chunk::deleteBlock(float x, float y) {

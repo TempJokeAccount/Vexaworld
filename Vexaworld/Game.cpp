@@ -67,3 +67,12 @@ void Game::render() {
 
     renderer->present();
 }
+
+// todo place this in image
+Image *Game::getImage(std::string path) {
+    Image *image = imageCache[path];
+    if (image == nullptr) {
+        image = imageCache[path] = new Image(renderer, path);
+    }
+    return image;
+}

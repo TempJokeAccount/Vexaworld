@@ -4,6 +4,7 @@
 #include "Scene.h"
 
 struct BlockOptions {
+    Image *image;
 };
 
 class ObjectPlacer final : public ImageBox {

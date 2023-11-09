@@ -6,5 +6,6 @@ class Chunk;
 
 class Block final : public ImageBox {
   public:
+    Block(Chunk *chunk, int x, int y, Image *image);
     Block(Chunk *chunk, int x, int y);
 };
