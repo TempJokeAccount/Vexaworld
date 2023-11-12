@@ -22,4 +22,5 @@ class Game {
     bool leftMouseHeld = false;
     // The window that was last clicked. If null, the scene is focused.
     Window *focusedWindow = nullptr;
+    Image* getImage(std::string url);
 };

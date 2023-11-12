@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Hotbar.cpp" />
     <ClCompile Include="PixelDrawer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SimpleSDLWrapper.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClInclude Include="Hotbar.h" />
     <ClInclude Include="PixelDrawer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Window.h" />
