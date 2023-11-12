@@ -14,7 +14,6 @@ class Game {
     std::map<std::string, Image *> imageCache{};
     void update(float deltaTime);
     void render();
-    Image *getImage(std::string path);
     void handleEvent(SDL_Event &event, bool *quit);
     SimpleSDLWrapper *renderer;
     Scene *scene;
