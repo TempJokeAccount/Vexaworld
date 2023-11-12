@@ -69,9 +69,9 @@ void Game::render() {
 }
 
 Image* Game::getImage(std::string path) {
-    Image *image = scene->game->imageCache[path];
+    Image *image = imageCache[path];
     if (image == nullptr) {
-        image = scene->game->imageCache[path] = new Image(renderer, path);
+        image = imageCache[path] = new Image(renderer, path);
     }
     return image;
 }
