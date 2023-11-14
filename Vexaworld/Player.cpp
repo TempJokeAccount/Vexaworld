@@ -24,24 +24,24 @@ void Player::applyGravity(float deltaTime) {
     }
     float newX = x + velX * deltaTime;
     float newY = y + velY * deltaTime;
-    Block *xBlocker = getBlocker(newX, y);
-    Block *yBlocker = getBlocker(x, newY);
+    SDL_Rect xBlocker = getBlockerRect(newX, y);
+    SDL_Rect yBlocker = getBlockerRect(x, newY);
     isGrounded = false;
 
-    if (xBlocker == nullptr) {
+    if (xBlocker.x == -1) {
         x = newX;
     } else {
-        if (xBlocker->x > this->x + (float)PLAYER_WIDTH / 2) {
+        if (xBlocker.x > this->x + (float)PLAYER_WIDTH / 2) {
             snapToLeft(xBlocker);
         } else {
             snapToRight(xBlocker);
         }
     }
 
-    if (yBlocker == nullptr) {
+    if (yBlocker.x == -1) {
         y = newY;
     } else {
-        if (yBlocker->y > this->y - (float)PLAYER_HEIGHT / 2) {
+        if (yBlocker.y > this->y - (float)PLAYER_HEIGHT / 2) {
             isGrounded = true;
             snapToBottom(yBlocker);
         } else {
@@ -51,30 +51,32 @@ void Player::applyGravity(float deltaTime) {
     }
 }
 
-void Player::snapToTop(Block *block) {
-    y = block->y + BLOCK_SIZE;
+void Player::snapToTop(SDL_Rect rect) {
+    y = rect.y + BLOCK_SIZE;
 }
 
-void Player::snapToBottom(Block *block) {
-    y = block->y - PLAYER_HEIGHT;
+void Player::snapToBottom(SDL_Rect rect) {
+    y = rect.y - PLAYER_HEIGHT;
 }
 
-void Player::snapToLeft(Block *block) {
-    x = block->x - PLAYER_WIDTH;
+void Player::snapToLeft(SDL_Rect rect) {
+    x = rect.x - PLAYER_WIDTH;
 }
 
-void Player::snapToRight(Block *block) {
-    x = block->x + BLOCK_SIZE;
+void Player::snapToRight(SDL_Rect rect) {
+    x = rect.x + BLOCK_SIZE;
 }
 
-Block *Player::getBlocker(float x, float y) {
-    return scene->getChunkAtPos(x, y)->getBlockIntersecting(x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
+SDL_Rect Player::getBlockerRect(float x, float y) {
+    SDL_Rect rect;
+    scene->getChunkAtPos(x, y)->getBlockIntersecting(x, y, PLAYER_WIDTH, PLAYER_HEIGHT, &rect);
+    return rect;
 }
 
 void Player::render() {
     float accX = x;
     float accY = y;
-    accX -= (float)width / 2;
+    accX -= float(width) / 2;
     accY -= height;
     accX -= scene->cameraX;
     accY -= scene->cameraY;

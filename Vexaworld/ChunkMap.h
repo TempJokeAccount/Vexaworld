@@ -2,16 +2,16 @@
 #include "Chunk.h"
 #include <map>
 
-class ChunkMap final {
+class ChunkMap {
   public:
     ChunkMap(Scene *scene);
     ~ChunkMap();
-    Chunk *get(long x, long y);
-    Chunk *create(long x, long y);
-    Chunk *create(std::pair<long, long> pair);
+    Chunk *get(int x, int y);
+    Chunk *create(int x, int y);
+    Chunk *create(std::pair<int, int> pair);
     void render();
 
   private:
     Scene *scene;
-    std::map<std::pair<long, long>, Chunk *> chunks;
+    std::map<std::pair<int, int>, Chunk *> chunks;
 };

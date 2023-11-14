@@ -7,6 +7,7 @@ class ChunkMap;
 class ObjectPlacer;
 class Block;
 class Chunk;
+class Hotbar;
 
 class Scene {
     friend Game;
@@ -22,6 +23,7 @@ class Scene {
     int cameraY = 0;
     bool leftMouseHeld = false;
     Player *player;
+    Hotbar *hotbar;
 
     void update(float deltaTime);
     void render();

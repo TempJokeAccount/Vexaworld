@@ -5,9 +5,11 @@
 #include "ObjectPlacer.h"
 #include "Player.h"
 #include "defs.h"
+#include "Hotbar.h"
 #include <cmath>
 
 Scene::Scene(Game *game, SimpleSDLWrapper *renderer) : game(game), renderer(renderer) {
+    hotbar = new Hotbar(this);
     player = new Player(this, 10, 10, PLAYER_WIDTH, PLAYER_HEIGHT, "firtir.png");
     chunks = new ChunkMap(this);
     objectPlacer = new ObjectPlacer(this);
@@ -23,8 +25,8 @@ void Scene::update(const float deltaTime) {
     player->update(deltaTime);
     auto dimensions = renderer->getDimensions();
 
-    cameraX = std::lerp(cameraX, player->x - dimensions.width / 2, 0.01 * deltaTime);
-    cameraY = std::lerp(cameraY, player->y - dimensions.height / 2, 0.003 * deltaTime);
+    cameraX = std::lerp(cameraX, player->x - dimensions.x / 2, 0.01 * deltaTime);
+    cameraY = std::lerp(cameraY, player->y - dimensions.y / 2, 0.003 * deltaTime);
 
     objectPlacer->update();
 }
@@ -33,6 +35,7 @@ void Scene::render() {
     player->render();
     chunks->render();
     objectPlacer->render();
+    hotbar->render();
 }
 
 Chunk *Scene::getChunkAtPos(float x, float y) {

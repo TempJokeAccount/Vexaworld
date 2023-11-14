@@ -25,12 +25,13 @@ class SimpleSDLWrapper {
     ~SimpleSDLWrapper();
     void setColor(int red, int green, int blue, int alpha);
     void fillRect(int x, int y, int width, int height);
+    void strokeRect(int x, int y, int width, int height);
     void drawImage(Image *, int x, int y, int width, int height);
     void drawImage(Image *, int x, int y, int width, int height, double angle, SDL_RendererFlip flip);
     void present();
     void clear();
     void delay(int);
-    Dimensions getDimensions();
+    SDL_Point getDimensions();
 
   private:
     SDL_Renderer *renderer;
