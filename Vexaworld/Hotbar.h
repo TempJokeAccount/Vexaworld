@@ -7,6 +7,10 @@ class Hotbar {
   public:
     Hotbar(Scene *scene);
     std::vector<BlockOptions> blocks;
+    int selectedBlockIndex = 0;
+    int x;
+    int y;
     Scene *scene;
     void render();
+    void onClick(SDL_Point mouse);
 };

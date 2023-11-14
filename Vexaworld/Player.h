@@ -4,9 +4,9 @@
 #include "ImageBox.h"
 #include "Scene.h"
 
-class Player final : public ImageBox {
+class Player final : public ImageEntity {
   public:
-    using ImageBox::ImageBox;
+    using ImageEntity::ImageEntity;
     float velY = 0;
     float velX = 0;
     bool isGrounded = false;
@@ -17,10 +17,10 @@ class Player final : public ImageBox {
     virtual void render() override;
 
   private:
-    void snapToTop(Block *block);
-    void snapToBottom(Block *block);
-    void snapToLeft(Block *block);
-    void snapToRight(Block *block);
+    void snapToTop(SDL_Rect rect);
+    void snapToBottom(SDL_Rect rect);
+    void snapToLeft(SDL_Rect rect);
+    void snapToRight(SDL_Rect rect);
     void applyGravity(float deltaTime);
-    Block *getBlocker(float x, float y);
+    SDL_Rect getBlockerRect(float x, float y);
 };

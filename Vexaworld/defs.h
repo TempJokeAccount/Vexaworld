@@ -11,15 +11,7 @@ constexpr int PLAYER_HEIGHT = (int)(PLAYER_WIDTH * 1.5);
 
 constexpr int WINDOW_TITLEBAR_HEIGHT = 24;
 
-constexpr int HOTBAR_PADDING = 2;
+constexpr int HOTBAR_PADDING = 4;
 constexpr int HOTBAR_BLOCKCOUNT = 10;
 constexpr int HOTBAR_WIDTH = HOTBAR_PADDING * (HOTBAR_BLOCKCOUNT + 1) + BLOCK_SIZE * HOTBAR_BLOCKCOUNT;
 constexpr int HOTBAR_HEIGHT = BLOCK_SIZE + HOTBAR_PADDING * 2;
-
-struct Dimensions {
-    int width, height;
-};
-
-struct Point {
-    int x, y;
-};

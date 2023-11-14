@@ -12,7 +12,7 @@ ChunkMap::~ChunkMap() {
     }
 }
 
-Chunk *ChunkMap::create(std::pair<long, long> pair) {
+Chunk *ChunkMap::create(std::pair<int, int> pair) {
     Chunk *chunk = new Chunk(scene, pair.first, pair.second);
     chunks[pair] = chunk;
     if (pair.second == 0)
@@ -20,14 +20,14 @@ Chunk *ChunkMap::create(std::pair<long, long> pair) {
     return chunk;
 }
 
-Chunk *ChunkMap::create(long x, long y) {
+Chunk *ChunkMap::create(int x, int y) {
     Chunk *chunk = new Chunk(scene, x, y);
     chunks[std::make_pair(x, y)] = chunk;
     chunk->loadTestChunk();
     return chunk;
 }
 
-Chunk *ChunkMap::get(long x, long y) {
+Chunk *ChunkMap::get(int x, int y) {
     auto pair = std::make_pair(x, y);
     if (!chunks.count(pair)) {
         return create(pair);

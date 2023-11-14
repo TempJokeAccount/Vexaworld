@@ -15,9 +15,9 @@ void PixelDrawer::renderContent(int x, int y, int width, int height) {
     canvas.render(x + 10, y + 10, width - 20, width - 20);
 }
 
-void PixelDrawer::handleContentEvent(SDL_Event &event, Point mouse) {
+void PixelDrawer::handleContentEvent(SDL_Event &event, SDL_Point mouse) {
     if (leftMouseHeld) {
-        Point pixel = canvas.getPixelPosAt(mouse.x - 10, mouse.y - 10);
+        SDL_Point pixel = canvas.getPixelPosAt(mouse.x - 10, mouse.y - 10);
         if (pixel.x != -1) {
             canvas.pixels[pixel.x][pixel.y] = {0xFF, 0xFF, 0xFF, 0xFF};
         }
@@ -56,7 +56,7 @@ void PixelDrawerCanvas::render(float x, float y, float width, float height) {
     }
 }
 
-Point PixelDrawerCanvas::getPixelPosAt(int x, int y) {
+SDL_Point PixelDrawerCanvas::getPixelPosAt(int x, int y) {
     int mySize = window->width - 20;
     if (x < 0 || y < 0 || x > mySize || y > mySize) {
         return {-1};

@@ -13,7 +13,7 @@ class Window {
     void handleEvent(SDL_Event &event);
     virtual void update() = 0;
     virtual void renderContent(int x, int y, int width, int height) = 0;
-    virtual void handleContentEvent(SDL_Event &event, Point mouse) = 0;
+    virtual void handleContentEvent(SDL_Event &event, SDL_Point mouse) = 0;
   private:
     bool isDragged = false;
     int lastDragX = 0;

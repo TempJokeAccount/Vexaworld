@@ -7,7 +7,7 @@ struct BlockOptions {
     Image *image;
 };
 
-class ObjectPlacer final : public ImageBox {
+class ObjectPlacer final : public ImageEntity {
   public:
     ObjectPlacer(Scene *scene);
     void update();

@@ -5,7 +5,7 @@
 #include "defs.h"
 #include "scene.h"
 
-ObjectPlacer::ObjectPlacer(Scene *scene) : ImageBox(scene, 0, 0, BLOCK_SIZE, BLOCK_SIZE, "block.png") {
+ObjectPlacer::ObjectPlacer(Scene *scene) : ImageEntity(scene, 0, 0, BLOCK_SIZE, BLOCK_SIZE, "block.png") {
     blockOptions = {};
 }
 
@@ -25,7 +25,7 @@ void ObjectPlacer::update() {
         if (deleteMode) {
             chunk->deleteBlock(x, y);
         } else {
-            chunk->placeBlock({}, x, y);
+            chunk->placeBlock({image}, x, y);
         }
     }
 }

@@ -32,6 +32,15 @@ void SimpleSDLWrapper::fillRect(int x, int y, int w, int h) {
     SDL_RenderFillRect(renderer, &rect);
 };
 
+void SimpleSDLWrapper::strokeRect(int x, int y, int w, int h) {
+    SDL_Rect rect = {};
+    rect.x = x;
+    rect.y = y;
+    rect.w = w;
+    rect.h = h;
+    SDL_RenderDrawRect(renderer, &rect);
+};
+
 void SimpleSDLWrapper::drawImage(Image *image, int x, int y, int w, int h) {
     SDL_Rect rect = {x, y, w, h};
     SDL_RenderCopy(renderer, image->texture, NULL, &rect);
@@ -54,7 +63,7 @@ void SimpleSDLWrapper::delay(int ms) {
     SDL_Delay(ms);
 };
 
-Dimensions SimpleSDLWrapper::getDimensions() {
+SDL_Point SimpleSDLWrapper::getDimensions() {
     int *widthPointer = new int;
     int *heightPointer = new int;
     SDL_GetRendererOutputSize(renderer, widthPointer, heightPointer);
